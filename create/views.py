@@ -26,6 +26,6 @@ def create(request):
             for chunk in hack_img.chunks():
                 destination.write(chunk)
 
-        return redirect('show')
+        return redirect('hackathons')
 
     return render(request, 'create.html')

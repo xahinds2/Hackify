@@ -3,7 +3,7 @@ from django.db import models
 
 class Hackathon(models.Model):
     title = models.CharField(max_length=100)
-    desc = models.CharField(max_length=100)
+    desc = models.TextField()
     sub_typ = models.CharField(max_length=100)
     start = models.DateField()
     end = models.DateField()
