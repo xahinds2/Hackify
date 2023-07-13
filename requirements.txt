@@ -1,2 +1,5 @@
 django
 mysqlclient
+bcrypt
+django-crispy-forms
+crispy_bootstrap4

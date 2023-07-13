@@ -58,7 +58,7 @@
     </style>
 </head>
 <body>
-    <h1>Available Hackathons</h1>
+    <h1>Registered Hackathons</h1>
 
     {% for hackathon in hackathons %}
     <div class="hackathon-details">
@@ -71,7 +71,7 @@
         <p><strong>Description:</strong></p>
         <p>{{ hackathon.desc }}</p>
         <div class="apply-button">
-            <a href="{% url 'register_hack' hack_id=hackathon.id %}">Register</a>
+            <a href="#">Remove</a>
         </div>
     </div>
     {% endfor %}
