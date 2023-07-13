@@ -1,12 +1,12 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login as log, logout
+from django.contrib.auth import authenticate, login as log
 
 
 @login_required
-def view_hacks(request):
-    return render(request, 'viewhacks.html')
+def home(request):
+    return render(request, 'home.html')
 
 
 def login(request):
@@ -14,9 +14,10 @@ def login(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
+        print(user)
         if user:
             log(request, user)
-            return redirect('view_hacks')
+            return redirect('home')
 
     return render(request, 'login.html')
 
@@ -32,6 +33,6 @@ def signup(request):
             return render(request, 'signup.html')
 
         User.objects.create(username=username, password=password, email=email)
-        return redirect('login_user')
+        return redirect('login')
 
     return render(request, 'signup.html')

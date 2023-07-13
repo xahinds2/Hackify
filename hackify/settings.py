@@ -38,11 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_bootstrap4',
-    'crispy_forms',
-    'create',
-    'listing',
-    'users'
+    'hackathon',
+    'home'
 ]
 
 MIDDLEWARE = [
@@ -82,7 +79,7 @@ WSGI_APPLICATION = 'hackify.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hackathons',
+        'NAME': 'hackify',
         'USER': 'root',
         'PASSWORD': 'sahindas1@',
         'HOST': 'localhost',
