@@ -20,11 +20,11 @@ def create(request):
         Hackathon.objects.create(title=title, desc=desc, sub_typ=sub_typ,
                                  start=start, end=end, reward=reward, prize=prize)
 
-        with open('create/static/'+title+'_bg_img.jpg', 'wb') as destination:
+        with open('static/'+title+'_bg_img.jpg', 'wb') as destination:
             for chunk in bg_img.chunks():
                 destination.write(chunk)
 
-        with open('create/static/'+title+'_hack_img.jpg', 'wb') as destination:
+        with open('static/'+title+'_hack_img.jpg', 'wb') as destination:
             for chunk in hack_img.chunks():
                 destination.write(chunk)
 
@@ -41,7 +41,7 @@ def hackathons(request):
     return render(request, 'hackathons.html', context)
 
 
-@login_required(login_url='login/')
+@login_required
 def register_hack(request, hack_id):
     hackathon = get_object_or_404(Hackathon, pk=hack_id)
     cart, created = Cart.objects.get_or_create(user=request.user, hackathon=hackathon)
@@ -50,7 +50,7 @@ def register_hack(request, hack_id):
     return redirect('hackathons')
 
 
-@login_required(login_url='login/')
+@login_required
 def cart_view(request):
     cart = Cart.objects.filter(user=request.user)
 
