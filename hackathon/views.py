@@ -41,7 +41,7 @@ def hackathons(request):
     return render(request, 'hackathons.html', context)
 
 
-@login_required
+@login_required(login_url='login/')
 def register_hack(request, hack_id):
     hackathon = get_object_or_404(Hackathon, pk=hack_id)
     cart, created = Cart.objects.get_or_create(user=request.user, hackathon=hackathon)
@@ -50,7 +50,7 @@ def register_hack(request, hack_id):
     return redirect('hackathons')
 
 
-@login_required
+@login_required(login_url='login/')
 def cart_view(request):
     cart = Cart.objects.filter(user=request.user)
 

@@ -37,7 +37,6 @@ def signup(request):
     return render(request, 'signup.html')
 
 
-@login_required
 def custom_logout(request):
     logout(request)
     return redirect('login')
