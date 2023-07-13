@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from create.models import Hackathon
 
 
@@ -25,5 +25,7 @@ def create(request):
         with open('create/static/'+title+'_hack_img.jpg', 'wb') as destination:
             for chunk in hack_img.chunks():
                 destination.write(chunk)
+
+        return redirect('show')
 
     return render(request, 'create.html')
