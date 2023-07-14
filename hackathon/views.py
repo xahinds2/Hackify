@@ -51,7 +51,7 @@ def register_hack(request, hack_id):
 
 
 @login_required
-def cart_view(request):
+def my_hackathons(request):
     cart = Cart.objects.filter(user=request.user)
 
     hacks = []
