@@ -68,11 +68,11 @@
             <div class="container-fluid">
                 <a class="navbar-brand text-white" href="/">Hackify</a>
                 <div class="">
+                    <a href="/my_hackathons"> <button class="btn btn-outline-success" type="submit">My Hackathons</button> </a>
                     {% if isLogin == '' %}
                     <a href="/login"> <button class="btn btn-outline-success" type="submit">Login</button></a>
                     <a href="/signup"> <button class="btn btn-outline-success" type="submit">Signup</button> </a>
                     {% else %}
-                    <a href="/users/"> <button class="btn btn-outline-success" type="submit"> Users</button> </a>
                     <a href="/logout"> <button class="btn btn-outline-success" type="submit"> Logout</button> </a>
                     {% endif %}
                 </div>
