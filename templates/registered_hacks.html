@@ -91,6 +91,9 @@
             <p><strong>Prize:</strong> {{ hackathon.prize }}</p>
             <p><strong>Description:</strong></p>
             <p>{{ hackathon.desc }}</p>
+            <div class="apply-button">
+                <a href="{% url 'submit_data' hack_id=hackathon.id %}">Make Submission</a>
+            </div>
         </div>
         {% endfor %}
 
