@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hackathon Submissions</title>
+</head>
+<body>
+    <h1>Hackathon Submissions</h1>
+    <table border="1">
+        <tr>
+            <th>Submission ID</th>
+            <th>Participant Name</th>
+            <th>Description</th>
+        </tr>
+        {% for submission in submissions %}
+        <tr>
+            <td>{{ submission.id }}</td>
+            <td>{{ submission.name }}</td>
+            <td>{{ submission.summ }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
