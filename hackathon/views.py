@@ -2,6 +2,7 @@ from hackathon.models import Hackathon
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render, redirect
 from home.models import Cart
+from submission.models import DataSubmission
 
 
 def create(request):
@@ -61,6 +62,8 @@ def my_hackathons(request):
     hacks = []
     for v in cart:
         hack = Hackathon.objects.filter(id=v.hackathon_id).first()
+        if DataSubmission.objects.filter(owner=request.user, hack=hack):
+            hack.sub_typ = ''
         hacks.append(hack)
 
     return render(request, 'registered_hacks.html', {'hackathons': hacks})

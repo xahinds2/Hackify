@@ -92,9 +92,16 @@
             <p><strong>Prize:</strong> {{ hackathon.prize }}</p>
             <p><strong>Description:</strong></p>
             <p>{{ hackathon.desc }}</p>
+
+            {% if hackathon.sub_typ != '' %}
             <div class="apply-button">
                 <a href="{% url 'submit_data' hack_id=hackathon.id %}">Make Submission</a>
             </div>
+            {% else %}
+            <div class="apply-button">
+                <a href="{% url 'submit_data' hack_id=hackathon.id %}">Submitted</a>
+            </div>
+            {% endif %}
         </div>
         {% endfor %}
 
