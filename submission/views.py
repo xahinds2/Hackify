@@ -8,25 +8,24 @@ from submission.models import DataSubmission
 @login_required
 def submit_data(request, hack_id):
 
+    hack = Hackathon.objects.filter(pk=hack_id).first()
+    sub_typ = hack.sub_typ
+
     if request.method == 'POST':
         name = request.POST.get('name')
         summ = request.POST.get('summ')
-        link = request.POST.get('link')
-        file = request.POST.get('file')
-        image = request.POST.get('image')
-        hack = Hackathon.objects.filter(pk=hack_id).first()
+        data = request.POST.get(sub_typ)
 
-        if DataSubmission.objects.filter(owner=request.user, hack=hack):
-            return render(request, 'submit_data.html')
+        if sub_typ == 'link':
+            DataSubmission.objects.create(name=name, summ=summ, link=data, owner=request.user, hack=hack)
+        elif sub_typ == 'img':
+            DataSubmission.objects.create(name=name, summ=summ, image=data, owner=request.user, hack=hack)
+        elif sub_typ == 'file':
+            DataSubmission.objects.create(name=name, summ=summ, file=data, owner=request.user, hack=hack)
 
-        if link:
-            DataSubmission.objects.create(name=name, summ=summ, link=link, owner=request.user, hack=hack)
-        elif image:
-            DataSubmission.objects.create(name=name, summ=summ, image=image, owner=request.user, hack=hack)
-        elif file:
-            DataSubmission.objects.create(name=name, summ=summ, file=file, owner=request.user, hack=hack)
+        return redirect('view_submissions')
 
-    return render(request, 'submit_data.html')
+    return render(request, 'submit_data.html', {'sub_typ': sub_typ})
 
 
 def view_submissions(request):

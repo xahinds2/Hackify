@@ -100,26 +100,19 @@
             <label for="summ">Summary:</label>
             <textarea id="summ" name="summ" required></textarea>
 
-            <div>
-                <label><input type="radio" name="submission_type" value="link"> Link</label>
-                <label><input type="radio" name="submission_type" value="image"> Image</label>
-                <label><input type="radio" name="submission_type" value="file"> File</label>
-            </div>
+            {% if sub_typ == 'file' %}
+            <label for="id_file">File:</label>
+            <input type="file" id="id_file" name="file">
 
-            <div id="link_div" style="display: none;">
-                <label for="id_link">Link:</label>
-                <input type="text" id="id_link" name="link">
-            </div>
+            {% elif sub_typ == 'img' %}
+            <label for="id_image">Image:</label>
+            <input type="file" id="id_image" name="img">
 
-            <div id="image_div" style="display: none;">
-                <label for="id_image">Image:</label>
-                <input type="file" id="id_image" name="image">
-            </div>
+            {% elif sub_typ == 'link' %}
+            <label for="id_link">Link:</label>
+            <input type="text" id="id_link" name="link">
 
-            <div id="file_div" style="display: none;">
-                <label for="id_file">File:</label>
-                <input type="file" id="id_file" name="file">
-            </div>
+            {% endif %}
 
             <input type="submit" value="Submit">
 
