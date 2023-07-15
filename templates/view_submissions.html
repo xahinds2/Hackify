@@ -7,13 +7,13 @@
     <h1>Hackathon Submissions</h1>
     <table border="1">
         <tr>
-            <th>Submission ID</th>
             <th>Hackathon</th>
-            <th>Description</th>
+            <th>Submission name</th>
+            <th>Summary of the submission</th>
         </tr>
         {% for submission in submissions %}
         <tr>
-            <td>{{ submission.id }}</td>
+            <td>{{ submission.hack_name }}</td>
             <td>{{ submission.name }}</td>
             <td>{{ submission.summ }}</td>
         </tr>

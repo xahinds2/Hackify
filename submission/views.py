@@ -28,7 +28,11 @@ def submit_data(request, hack_id):
     return render(request, 'submit_data.html', {'sub_typ': sub_typ})
 
 
+@login_required
 def view_submissions(request):
+
     submissions = DataSubmission.objects.all().values()
-    print(submissions)
+    for i in range(len(submissions)):
+        submissions[i]['hack_name'] = Hackathon.objects.get(pk=submissions[i]['hack_id']).title
+
     return render(request, 'view_submissions.html', {'submissions': submissions})
