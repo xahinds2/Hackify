@@ -68,6 +68,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand text-white" href="/">Hackify</a>
                 <div class="">
+                    <a href="/view_submissions"> <button class="btn btn-outline-success" type="submit">My Submissions</button></a>
                     <a href="/hackathons"> <button class="btn btn-outline-success" type="submit">Hackathons</button></a>
                     {% if isLogin == '' %}
                     <a href="/login"> <button class="btn btn-outline-success" type="submit">Login</button></a>
@@ -83,7 +84,7 @@
 
         {% for hackathon in hackathons %}
         <div class="hackathon-details border-success text-white">
-            <h2>{{ hackathon.title }}</h2>
+            <h2 style="text-align: center;">{{ hackathon.title }}</h2>
             <p><strong>Submission Type:</strong> {{ hackathon.sub_typ }}</p>
             <p><strong>Start Date:</strong> {{ hackathon.start }}</p>
             <p><strong>End Date:</strong> {{ hackathon.end }}</p>
@@ -91,6 +92,16 @@
             <p><strong>Prize:</strong> {{ hackathon.prize }}</p>
             <p><strong>Description:</strong></p>
             <p>{{ hackathon.desc }}</p>
+
+            {% if hackathon.sub_typ != '' %}
+            <div class="apply-button">
+                <a href="{% url 'submit_data' hack_id=hackathon.id %}">Make Submission</a>
+            </div>
+            {% else %}
+            <div class="apply-button">
+                <a href="{% url 'submit_data' hack_id=hackathon.id %}">Submitted</a>
+            </div>
+            {% endif %}
         </div>
         {% endfor %}
 

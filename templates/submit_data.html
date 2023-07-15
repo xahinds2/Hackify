@@ -91,37 +91,28 @@
         </nav>
 
         <form action="" method="post" enctype="multipart/form-data" class="border-success">
+
             {% csrf_token %}
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required>
 
-            <label for="desc">Description:</label>
-            <textarea id="desc" name="desc" required></textarea>
+            <label for="Name">Name:</label>
+            <input type="text" id="name" name="name" required>
 
-            <label for="bg_img">Background Image:</label>
-            <input type="file" id="bg_img" name="bg_img" accept="image/*" required>
+            <label for="summ">Summary:</label>
+            <textarea id="summ" name="summ" required></textarea>
 
-            <label for="hack_img" style="margin-top:10px">Hackathon Image:</label>
-            <input type="file" id="hack_img" name="hack_img" accept="image/*" required>
+            {% if sub_typ == 'file' %}
+            <label for="id_file">File:</label>
+            <input type="file" id="id_file" name="file">
 
-            <label for="sub_typ" style="margin-top:10px">Submission Type:</label>
-            <select id="sub_typ" name="sub_typ" required>
-            <option value="img">Image</option>
-            <option value="link">Link</option>
-            <option value="file">File</option>
-            </select>
+            {% elif sub_typ == 'img' %}
+            <label for="id_image">Image:</label>
+            <input type="file" id="id_image" name="img">
 
-            <label for="start">Start Date:</label>
-            <input type="date" id="start" name="start" required>
+            {% elif sub_typ == 'link' %}
+            <label for="id_link">Link:</label>
+            <input type="text" id="id_link" name="link">
 
-            <label for="end" style="margin-top:10px">End Date:</label>
-            <input type="date" id="end" name="end" required>
-
-            <label for="reward" style="margin-top:10px">Reward:</label>
-            <input type="number" id="reward" name="reward" required>
-
-            <label for="prize">Prize:</label>
-            <input type="text" id="prize" name="prize" required>
+            {% endif %}
 
             <input type="submit" value="Submit">
 
