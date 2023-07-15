@@ -35,10 +35,14 @@ def create(request):
 
 def hackathons(request):
 
-    context = {
-        'hackathons': Hackathon.objects.all().values()
-    }
-    return render(request, 'hackathons.html', context)
+    hacks = []
+    query = Hackathon.objects.all()
+
+    for hack in query:
+        if not Cart.objects.filter(user=request.user, hackathon=hack):
+            hacks.append(hack)
+
+    return render(request, 'hackathons.html', {'hackathons': hacks})
 
 
 @login_required
