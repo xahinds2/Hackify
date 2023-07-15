@@ -118,28 +118,5 @@
 
         </form>
 
-        <script>
-            var submissionType = document.querySelectorAll('input[name="submission_type"]');
-            var linkDiv = document.getElementById('link_div');
-            var imageDiv = document.getElementById('image_div');
-            var fileDiv = document.getElementById('file_div');
-
-            submissionType.forEach(function (element) {
-                element.addEventListener('change', function () {
-                    linkDiv.style.display = 'none';
-                    imageDiv.style.display = 'none';
-                    fileDiv.style.display = 'none';
-
-                    if (this.value === 'link') {
-                        linkDiv.style.display = 'block';
-                    } else if (this.value === 'image') {
-                        imageDiv.style.display = 'block';
-                    } else if (this.value === 'file') {
-                        fileDiv.style.display = 'block';
-                    }
-                });
-            });
-        </script>
-
     </body>
 </html>
