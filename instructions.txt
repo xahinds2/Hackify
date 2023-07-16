@@ -1,0 +1,14 @@
+Python version : 3.11.4
+
+Steps to run the app in local machine :
+
+1. set virtual env
+2. pip install -r requirements.txt
+3. go to hackify.settings.py and change database parameters
+4. python manage.py makemigarations home
+5. python manage.py makemigarations submission
+6. python manage.py makemigarations hackathon
+7. python manage.py migrate
+8. python manage.py runserver
+
+Done.
